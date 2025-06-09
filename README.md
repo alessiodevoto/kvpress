@@ -29,10 +29,8 @@ kvpress provides a set of "presses" that compress the KV cache during the prefil
 from transformers import pipeline
 from kvpress import ExpectedAttentionPress
 
-device = "cuda:0"
 model = "meta-llama/Llama-3.1-8B-Instruct"
-model_kwargs = {"attn_implementation": "flash_attention_2"}
-pipe = pipeline("kv-press-text-generation", model=model, device=device, model_kwargs=model_kwargs)
+pipe = pipeline("kv-press-text-generation", model=model)
 
 context = "A very long text you want to compress once and for all"
 question = "\nA question about the compressed context"  # optional
